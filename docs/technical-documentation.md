@@ -2,7 +2,7 @@
 ### Assignment 3 – Advanced Functionality  
 **Course:** SWE363 – Web Engineering  
 **Author:** Raghad Almaghrabi  
-**Semester:** 2025  
+
 
 This document explains the technical implementation of the portfolio web application created for Assignment 3.  
 It covers the logic, API integrations, state management, UI behaviors, performance techniques, and accessibility considerations used throughout the project.
