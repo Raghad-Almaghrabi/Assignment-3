@@ -1,1 +1,334 @@
 
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Raghad Almaghrabi — Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="brand">RAGHAD<br/>ALMAGHRBAI</div>
+
+    <nav class="nav" role="navigation" aria-label="Main">
+      <ul class="nav-list">
+        <li><a href="#about">[ ABOUT ME ]</a></li>
+        <li><a href="#works">[ PROJECTS ]</a></li>
+        <li><a href="#skills">[ SKILLS ]</a></li>
+        <li><a href="#connect">[ CONNECT ]</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <!-- Light/Dark Switch -->
+      <label class="theme-switch" title="Toggle theme">
+        <input type="checkbox" id="themeToggle" aria-label="Toggle dark mode">
+        <span class="slider">
+          <span class="knob" aria-hidden="true"></span>
+          <span class="labels" aria-hidden="true">
+            <span class="light">Light</span>
+            <span class="dark">Dark</span>
+          </span>
+        </span>
+      </label>
+
+      <!-- Simulated login state -->
+      <button id="loginToggle" class="nav-button" type="button">
+        LOGIN
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Auto Greeting Popup -->
+    <div class="popup-overlay" id="popupOverlay" aria-hidden="true">
+      <div class="popup" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+        <button class="close" id="closePopup" aria-label="Close">&times;</button>
+        <div class="popup-content">
+          <h2 id="popupTitle" class="popup-title">Welcome 👋</h2>
+          <p id="popupGreeting" class="popup-greeting">Good day!</p>
+
+          <form id="nameForm" class="name-form" autocomplete="off">
+            <label for="username">What should I call you?</label>
+            <input type="text" id="username" name="username" placeholder="Enter your name" maxlength="24" required />
+            <button type="submit" class="btn-primary">Save</button>
+            <p class="form-hint">We’ll remember you with localStorage only on this browser.</p>
+          </form>
+
+          <div id="popupActions" class="popup-actions" hidden>
+            <button id="dismissPopup" class="btn-primary" type="button">Let’s go!</button>
+            <button id="forgetName" class="btn-secondary" type="button">Not you? Change name</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <h1 class="big-title">SOFTWARE ENGINEER</h1>
+
+      <div class="photo-wrap">
+        <img src="assets/images/raghad.png" alt="Raghad Almaghrabi">
+      </div>
+
+      <div class="info-block skills">
+        /SOFTWARE DEVELOPMENT<br>/PROJECT MANAGEMENT<br>/WEB DESIGN
+      </div>
+
+      <div class="based">BASED IN SAUDI ARABIA</div>
+
+      <p class="subtext">
+        I'M A SOFTWARE ENGINEERING STUDENT AT KFUPM,<br>
+        PASSIONATE ABOUT WEB DEVELOPMENT<br>
+        AND PROJECT MANAGEMENT OF ALL SIZES.
+      </p>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about-section">
+      <div class="overlay">
+        <h1 class="wave-text">
+          <span>A</span><span>B</span><span>O</span><span>U</span><span>T</span><span> </span><span>M</span><span>E</span>
+        </h1>
+
+        <p class="about-intro">
+          Hello! I’m Raghad, a passionate software engineer who loves turning complex ideas into simple, elegant
+          experiences. I build reliable web apps, iterate fast, and design for clarity and delight.
+        </p>
+
+        <div class="experience-toggle">
+          <label for="experienceLevel">What best describes you?</label>
+          <select id="experienceLevel">
+            <option value="all">Just browsing</option>
+            <option value="beginner">Beginner</option>
+            <option value="advanced">Advanced</option>
+          </select>
+          <p id="experienceMessage" class="experience-message">
+            I’ll show a mix of projects that balance learning and real-world impact.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="works" class="projects-section">
+      <div class="connectContent">
+        <h1 class="wave-text" id="projects-title" style="color:#479e55">
+          <span>P</span><span>R</span><span>O</span><span>J</span><span>E</span><span>C</span><span>T</span><span>S</span>
+        </h1>
+      </div>
+
+      <!-- Project Controls -->
+      <div class="projects-controls">
+        <input id="projectSearch" type="search" placeholder="Search projects…" aria-label="Search projects">
+        <select id="projectFilter" aria-label="Filter by tag">
+          <option value="all">All Tags</option>
+          <option value="web">Web</option>
+          <option value="ai">AI</option>
+          <option value="design">Design</option>
+        </select>
+        <select id="projectSort" aria-label="Sort projects">
+          <option value="title-asc">Title (A → Z)</option>
+          <option value="title-desc">Title (Z → A)</option>
+          <option value="date-desc">Newest</option>
+          <option value="date-asc">Oldest</option>
+        </select>
+        <button id="toggleProjectsButton" class="nav-button" type="button">
+          Hide Projects
+        </button>
+      </div>
+
+      <div class="ContentContainer">
+        <div id="projectsGrid" class="container">
+          <article class="card" data-title="ReFocus" data-date="2025-05-12" data-tags="web,ai" data-level="advanced">
+            <div class="content">
+              <div class="imgBx"><img src="assets/images/Subject2.png" alt="ReFocus preview"></div>
+              <div class="contentBx">
+                <h3>ReFocus</h3>
+                <span>Boost focus, heal brain fatigue, and sharpen attention.</span>
+              </div>
+            </div>
+            <ul class="sci">
+              <li>Built interactive features that enhance attention and engagement across sessions.</li>
+            </ul>
+          </article>
+
+          <article class="card" data-title="AgriScan AI" data-date="2024-10-01" data-tags="ai,web" data-level="advanced">
+            <div class="content">
+              <div class="imgBx"><img src="assets/images/Subject3.png" alt="AgriScan AI preview"></div>
+              <div class="contentBx">
+                <h3>AgriScan AI</h3>
+                <span>Detects crop diseases early for healthier yields.</span>
+              </div>
+            </div>
+            <ul class="sci">
+              <li>Worked as a data scientist handling preprocessing, training, and evaluation.</li>
+            </ul>
+          </article>
+
+          <article class="card" data-title="TEDx KFUPM Auditorium" data-date="2023-12-15" data-tags="design" data-level="beginner">
+            <div class="content">
+              <div class="imgBx"><img src="assets/images/Subject4.png" alt="TEDx auditorium design"></div>
+              <div class="contentBx">
+                <h3>TedxKFUPM</h3>
+                <span>Designing the auditorium experience for TEDx events.</span>
+              </div>
+            </div>
+            <ul class="sci">
+              <li>Designed layout and ambiance to amplify audience engagement.</li>
+            </ul>
+          </article>
+        </div>
+
+        <p id="emptyProjects" class="empty-state" hidden>
+          😅 No projects found. Try a different search, filter, or level.
+        </p>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="skills-section">
+      <div class="connectContent">
+        <h1 class="wave-text" id="skills-text" style="color:#479e55">
+          <span>S</span><span>K</span><span>I</span><span>L</span><span>L</span><span>S</span>
+        </h1>
+      </div>
+      <p class="skills-intro">
+        Tap a card to expand. Everything is keyboard accessible and theme-aware.
+      </p>
+
+      <div class="skills-container">
+        <article class="skill-card" tabindex="0" data-collapsed="true">
+          <header class="skill-header">
+            <h3 class="skill-title">Technical Skills</h3>
+            <span class="chev">▸</span>
+          </header>
+          <div class="skill-details">
+            <ul class="skill-list">
+              <li>Frontend: HTML, CSS, JavaScript, React basics</li>
+              <li>Backend: C#/.NET (WinForms, Interop), APIs</li>
+              <li>Data/AI: Python (pandas, basics), ML workflow awareness</li>
+              <li>Tooling: Git/GitHub, VS Code, Excel Interop</li>
+              <li>Design: Responsive layouts, accessibility awareness</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="skill-card" tabindex="0" data-collapsed="true">
+          <header class="skill-header">
+            <h3 class="skill-title">Soft Skills</h3>
+            <span class="chev">▸</span>
+          </header>
+          <div class="skill-details">
+            <ul class="skill-list">
+              <li>Project Management & Timeboxing (Pomodoro, task scoping)</li>
+              <li>Team Collaboration & Communication</li>
+              <li>User-centric thinking & rapid prototyping</li>
+              <li>Analytical mindset & problem solving</li>
+              <li>Public speaking (TEDx coordination exposure)</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- WEATHER (API INTEGRATION) -->
+    <section id="weather" class="weather-section">
+      <h2 class="section-title-sm" style="color: #479e55;">Current Weather — Dhahran</h2>
+      <p class="weather-subtitle">
+        Live data from an external Weather API (Open-Meteo).
+      </p>
+
+      <div id="weatherCard" class="weather-card" aria-live="polite">
+        <p id="weatherStatus" class="weather-status">Loading weather…</p>
+        <div class="weather-main" hidden>
+          <p class="weather-temp">
+            <span id="weatherTemp">--</span>°C
+          </p>
+          <p class="weather-desc" id="weatherDesc">--</p>
+          <p class="weather-meta">
+            Wind: <span id="weatherWind">--</span> m/s |
+            Last update: <span id="weatherUpdated">--</span>
+          </p>
+        </div>
+        <button id="refreshWeather" class="nav-button" type="button">
+          Refresh Weather
+        </button>
+      </div>
+    </section>
+
+    <!-- CONNECT -->
+    <section id="connect" class="about-connect">
+      <div class="connectContent">
+        <h1 class="wave-text" id="connect-text">
+          <span>C</span><span>O</span><span>N</span><span>N</span><span>E</span><span>C</span><span>T</span>
+        </h1>
+      </div>
+
+      <h3 class="phrase">Great Minds Think Alike</h3>
+
+      <form class="contact-form" id="contactForm" novalidate>
+        <label for="name">YOUR NAME*</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="phone">PHONE*</label>
+        <input type="text" id="phone" name="phone" required>
+
+        <label for="email">EMAIL ADDRESS*</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">HOW CAN I HELP YOU?</label>
+        <input type="text" id="message" name="message" required>
+
+        <button type="submit" class="nav-button">SUBMIT ➚</button>
+
+        <p id="formSuccess" class="form-success" hidden>
+          ✅ Thanks! Your message was received.
+        </p>
+        <p id="formError" class="form-error" hidden>
+          ⚠️ Please fix the highlighted fields.
+        </p>
+      </form>
+    </section>
+
+    <!-- CONTACT INFO -->
+    <section id="contact">
+      <div class="right-sidebar">
+        <div class="top-right">
+          <p class="contact-phone">+996 55 306 9969</p>
+          <p class="contact-email">rgd.mgh@gmail.com</p>
+        </div>
+        <div class="right-social">
+          <a href="https://www.instagram.com/" class="nav-button" target="_blank" rel="noopener">Instagram ➚</a>
+          <a href="https://t.me/" class="nav-button" target="_blank" rel="noopener">Telegram ➚</a>
+          <a href="https://www.linkedin.com/in/" class="nav-button" target="_blank" rel="noopener">LinkedIn ➚</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="bottom-left">
+        <p>
+          DHAHRAN, SAUDI ARABIA (GMT+3):
+          <span id="current-time">--:--</span> |
+          Session: <span id="session-duration">0s</span>
+        </p>
+      </div>
+      <div class="bottom-right">
+        <p id="loginStatus">Guest mode</p>
+        <p>© 2025 RAGHADALMAGHRABI</p>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/script.js" defer></script>
+</body>
+</html>
