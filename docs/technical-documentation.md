@@ -1,155 +1,266 @@
-title: "Technical Documentation"
-assignment: "Assignment 3 – Advanced Functionality"
-course: "SWE363 – Web Engineering"
-author: "Raghad Almaghrabi"
-semester: "2025"
+# 📘 Technical Documentation  
+### Assignment 3 – Advanced Functionality  
+**Course:** SWE363 – Web Engineering  
+**Author:** Raghad Almaghrabi  
+**Semester:** 2025  
 
-overview: |
-  This document provides technical details for the implementation of my Assignment 3 portfolio web application.
-  It covers logic, API integration, state management, UI components, performance techniques, and advanced behaviors.
-  The project is built entirely using HTML, CSS, and vanilla JavaScript while incorporating external APIs
-  and persistent front-end state using localStorage.
+This document explains the technical implementation of the portfolio web application created for Assignment 3.  
+It covers the logic, API integrations, state management, UI behaviors, performance techniques, and accessibility considerations used throughout the project.
 
-structure: |
-  # (Leave this empty — you will insert the project structure here later)
+---
 
-utilities: |
-  Utility helpers are implemented for cleaner DOM access and reusable logic.
-  These include:
-    - `$()` for selecting a single element
-    - `$$()` for selecting multiple elements as arrays
-  These functions reduce repeated querySelector calls and simplify the codebase.
+# 1️⃣ Overview
 
-greeting_popup_system: |
-  The greeting popup appears on initial page load and uses:
-    - Time-based greetings (morning, afternoon, evening)
-    - Username storage in localStorage
-    - Dynamic updates depending on whether a name exists
-  The popup includes:
-    - A name form (first-time users)
-    - A personalized greeting (returning users)
-    - Buttons to dismiss or reset the saved name
+This project is a fully interactive portfolio website built using:
 
-theme_toggle: |
-  The site supports light and dark mode using a toggle switch in the header.
-  The selected theme is stored in `localStorage.theme` so it persists across sessions.
-  The theme is applied using:
-    `document.body.classList.toggle("dark", theme === "dark")`.
+- **HTML5**
+- **CSS3**
+- **Vanilla JavaScript (ES6+)**
+- **Open-Meteo Weather API (no key required)**
+- **LocalStorage for client-side persistence**
 
-projects_section: |
-  The Projects system contains advanced dynamic logic:
-    - Live search (title + tags)
-    - Tag filters (web, ai, design)
-    - Sorting (A–Z, Z–A, Newest, Oldest)
-    - Experience-level filtering (beginner, advanced, all)
-    - Show/Hide button with persistent state
-    - "No projects found" state for empty results
+It implements advanced front-end functionality including dynamic rendering, filtering, sorting, state synchronization, and real API data.
 
-  Each project uses HTML5 `data-*` attributes:
-    - data-title
-    - data-date
-    - data-tags
-    - data-level
+---
 
-  Rendering is fully dynamic via the `renderProjects()` function which:
-    - Filters cards by search, tag, and level
-    - Sorts according to the selected rules
-    - Rebuilds the DOM efficiently
-    - Ensures the project grid never stays hidden unintentionally
+# 2️⃣ Project Structure  
+```
+assignment-3/
+├── README.md
+├── index.html
+├── css/
+│   └── styles.css
+├── js/
+│   └── script.js
+├── assets/
+│   └── images/
+├── docs/
+│   ├── ai-usage-report.md
+│   └── technical-documentation.md
+└── .gitignore
+```
 
-experience_level_system: |
-  Located inside the About section.
-  A dropdown input allows users to identify themselves as:
-    - Beginner
-    - Advanced
-    - Just browsing
+---
 
-  This selection:
-    - Changes the descriptive message
-    - Filters the projects automatically to match their skill level
-  Levels are stored in `data-level` attributes on each project card.
+# 3️⃣ Utility Functions
 
-weather_api_integration: |
-  The site integrates real-time weather data using the Open-Meteo API.
-  This API requires no authentication and provides:
-    - Temperature
-    - Weather code
-    - Wind speed
-    - Timestamp of last update
+Utility helpers were created to simplify and shorten DOM access:
 
-  Features include:
-    - Loading state
-    - Graceful error handling
-    - Manual refresh button
-    - Human-readable weather descriptions via `weatherCodeToText()`
+- **`$()`** → Fast `querySelector`
+- **`$$()`** → Returns a real array from `querySelectorAll`
 
-form_validation: |
-  The contact form validation includes:
-    - Required field enforcement
-    - Regex email validation
-    - Live inline error feedback
-    - Success + error message toggling
-  The form does not submit data to a backend, as per assignment requirements.
+These functions improve readability and reduce repetitive code.
 
-session_timer_and_clock: |
-  The footer displays:
-    - Current time (updated every second)
-    - Session duration since the user loaded the page
-  These values update via `setInterval(updateClock, 1000)`.
+---
 
-login_simulation: |
-  A LOGIN/LOGOUT button simulates authentication.
-    - Toggles button text
-    - Updates footer status (“Guest mode” vs “Logged in”)
-    - State stored in `localStorage.isLoggedIn`
+# 4️⃣ Greeting Popup System
 
-skills_accordion: |
-  The Skills section uses an interactive accordion:
-    - Expand/collapse on click, Enter, or Space
-    - State managed using a `data-collapsed` attribute
-    - Fully keyboard accessible
-  This improves usability and accessibility.
+A fully dynamic popup appears automatically when the page loads.
 
-performance_optimizations: |
-  Applied optimizations include:
-    - Caching DOM selectors
-    - Reducing layout thrashing
-    - Grouping DOM updates
-    - Eliminating redundant queries
-    - Simplifying animations
-    - Clean, modular JavaScript functions
-    - Improved CSS organization for maintainability
+### Features:
+- Time-based greetings:
+  - *Good Morning / Good Afternoon / Good Evening*
+- Saves username in **localStorage**
+- If a name exists → shows personalized greeting  
+- If no name exists → shows a form to collect the user’s name
+- Includes:
+  - “Let’s go!” button  
+  - “Change name” option  
 
-accessibility: |
-  Accessibility considerations include:
-    - aria-modal, aria-hidden for the popup
-    - aria-live for weather updates
-    - Keyboard-navigable accordions
-    - High-contrast dark/light themes
-    - Semantic HTML structure
-    - Focus management on interactive elements
 
-limitations: |
-  Current limitations:
-    - Contact form is frontend-only (no backend)
-    - Weather shows only current conditions
-    - Login simulation is purely client-side
-    - Project list is static rather than API-driven
+---
 
-future_improvements: |
-  Planned future enhancements:
-    - Integrate GitHub API to fetch real repositories
-    - Add multilingual support (English/Arabic)
-    - Add animations to project filtering
-    - Add backend support for real contact submissions
-    - Improve weather card with icons and hourly forecast
+# 5️⃣ Theme Toggle (Light / Dark Mode)
 
-conclusion: |
-  This project successfully implements all advanced features required for Assignment 3:
-    - External API integration
-    - Complex JavaScript logic
-    - Local storage state management
-    - Performance optimization
-    - Documentation and accessibility
-  The portfolio now provides a dynamic, interactive, and modern user experience.
+A theme switch is provided in the header.
+
+### How it works:
+- Toggling the switch adds or removes the `.dark` class from `<body>`
+- Current theme is saved in: light mode \ dark mode
+- The theme is restored instantly on page load.
+
+---
+
+# 6️⃣ Projects Section (Advanced Dynamic Logic)
+
+The Projects section implements multiple layers of functionality.
+
+### Includes:
+- **Live search** (title + tags)
+- **Category filter** (Web, AI, Design)
+- **Sorting**:
+  - Title A–Z  
+  - Title Z–A  
+  - Newest  
+  - Oldest  
+- **Experience-level filter** (Beginner, Advanced, All)
+- **Show/Hide Projects** toggle  
+- **Persistent visibility state using localStorage**
+- **No-projects-found state** when filtering returns 0 results
+
+### Core function:  
+`renderProjects()` handles all filtering, sorting, and dynamic DOM rebuilding.
+
+---
+
+# 7️⃣ Experience Level System
+
+Located inside the **About Me** section.
+
+Users select their own experience level:
+- Beginner  
+- Advanced  
+- Just browsing  
+
+The system then:
+- Updates the message displayed under the dropdown
+- Dynamically filters projects by the `data-level` attribute
+
+This improves personalisation & UX.
+
+---
+
+# 8️⃣ Weather API Integration (Open-Meteo)
+
+The site fetches real-time weather for **Dhahran** using Open-Meteo.
+
+### Data retrieved:
+- Temperature (°C)
+- Weather code → converted into readable text
+- Wind speed
+- Timestamp of last update
+
+### Features:
+- Automatic load on page open  
+- Loading state while fetching  
+- Fallback error message on failure  
+- Manual refresh button  
+
+This satisfies the Assignment 3 requirement for external API integration.
+
+---
+
+# 9️⃣ Contact Form Validation
+
+The contact form includes custom validation:
+
+### Rules:
+- All fields are required
+- Email validated using regex
+- Inline error styling added to invalid fields
+- Success & error messages shown dynamically
+
+The form does not require backend submission per assignment requirements.
+
+---
+
+# 🔟 Session Timer & Live Clock
+
+Displayed in the footer:
+
+- Current **local time** (updates every second)
+- **Session duration** tracking how long the visitor has been on the website
+
+Both are updated via `setInterval()` every 1 second.
+
+---
+
+# 1️⃣1️⃣ Simulated Login System
+
+A button in the header allows toggling between:
+
+- **LOGIN**
+- **LOGOUT**
+
+
+### Affects:
+- Button text
+- Footer login status (Guest mode / Logged in)
+
+There is no backend authentication — this is a simulated front-end state system.
+
+---
+
+# 1️⃣2️⃣ Skills Accordion
+
+The Skills section includes an interactive accordion:
+
+- Expands/collapses on click  
+- Keyboard accessible (Enter + Space)
+- State managed with `data-collapsed` attribute
+- Smooth animation handled via CSS transitions
+
+This improves organization and accessibility.
+
+---
+
+# 1️⃣3️⃣ Performance Optimizations
+
+The project includes several front-end optimization techniques:
+
+### Techniques:
+- Cached DOM selectors
+- Grouped DOM updates to reduce reflows
+- Efficient filtering and sorting logic
+- Removed unused code and redundant styles
+- Modular JS structure for maintainability
+- Minimized repeated date parsing
+
+As required by the assignment, performance improvements were intentionally included.
+
+---
+
+# 1️⃣4️⃣ Accessibility Features
+
+Thoughtful accessibility features were added:
+
+- `aria-modal`, `aria-hidden` for popup
+- `aria-live="polite"` for weather updates
+- Keyboard-friendly interactive cards
+- High contrast dark/light themes
+- Semantic structure for better screen reader support
+
+---
+
+# 1️⃣5️⃣ Limitations
+
+Current limitations include:
+
+- Contact form does not send to a backend  
+- Weather API only shows current conditions  
+- Login system is fully client-side  
+- Project list is static (not pulled from GitHub API)
+
+---
+
+# 1️⃣6️⃣ Future Improvements
+
+Potential upgrades:
+
+- Fetch real GitHub repositories using GitHub API  
+- Add multilingual support (English/Arabic)  
+- Add animations to project filters  
+- Build backend for real contact form submissions  
+- Add weather icons + hourly forecast  
+
+---
+
+# ✅ Conclusion
+
+This portfolio application fulfills all **Assignment 3** requirements:
+
+- ✔ External API Integration  
+- ✔ Complex JavaScript Logic  
+- ✔ State Management  
+- ✔ Performance Improvements  
+- ✔ Accessibility  
+- ✔ Full Documentation  
+- ✔ AI Usage Report  
+
+The website now provides an advanced, modern, interactive user experience showcasing professional technical skills.
+
+
+
+
+
 
