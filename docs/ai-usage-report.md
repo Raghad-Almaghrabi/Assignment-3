@@ -6,6 +6,7 @@
 
 This document summarizes how AI tools were used during the development of Assignment 3, following the course guidelines for transparency and academic integrity.
 
+
 ---
 
 # 1️⃣ Tools Used
