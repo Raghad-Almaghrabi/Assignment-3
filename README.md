@@ -1,27 +1,49 @@
-# Assignment 3 – Advanced Functionality Portfolio
+# Assignment 3 – Advanced Functionality  
+### Portfolio Web Application – Raghad Almaghrabi
 
-## Overview
-Short description of your portfolio and what this assignment adds
-(API integration, weather widget, filters, state, etc.)
+This is my third assignment for SWE363 – Web Engineering.  
+The goal of this project is to expand my personal portfolio website with **advanced JavaScript functionality**, **external API integration**, **state management**, **performance improvements**, and **AI-assisted development documentation**.
 
-## Features
-- Weather widget using OpenWeatherMap API
-- Project list with search, filter, sort
-- Dark/Light mode (with localStorage)
-- Greeting popup that remembers the user name
-- Contact form with validation
-- Live clock for Dhahran time
+Live Demo (optional): *(Add your GitHub Pages link here if deployed)*
 
-## Running the Project
-1. Clone the repo
-2. Open `index.html` directly in a browser OR use Live Server
-3. Edit `js/script.js` and add your OpenWeatherMap API key
+---
 
-## AI Usage (Summary)
-See `docs/ai-usage-report.md` for detailed prompts and edits.
+## 🌟 Features Implemented
 
-## Deployment (Optional)
-- Use GitHub Pages:
-  - Push to `main`
-  - In repo settings → Pages → deploy from root
+### ✔ 1. **External API Integration (Weather API)**
+- Integrated **Open-Meteo API** to fetch real-time weather for Dhahran.
+- Displays temperature, wind speed, weather condition text, and last-updated time.
+- Includes a **Refresh Weather** button with graceful error handling.
+- Hidden loading states and fallback messages.
 
+### ✔ 2. **Complex Logic**
+- Dynamic **project search**, **filter**, **sort**, and **experience-level logic** (Beginner / Advanced / All).
+- Automatic **greeting popup** with time-aware messages.
+- **Form validation** with inline feedback and error highlighting.
+- **Session timer** that tracks how long the visitor has been on the site.
+- **Show/Hide Projects** feature with localStorage persistence.
+
+### ✔ 3. **State Management**
+- **Dark/Light theme** saved in localStorage.
+- **Username greeting** saved in localStorage.
+- **Simulated Login System** (Login/Logout toggle stored in localStorage).
+- **Project visibility state** (remember if user hid the project grid).
+- **Experience level selection** influences filtering logic.
+
+### ✔ 4. **Performance Improvements**
+- Cleaned and optimized CSS.
+- Removed unused scripts.
+- All images moved to `/assets/images/` for easier lazy-loading in the future.
+- Minimized DOM reflows during project rendering.
+- Cached DOM selectors for improved performance.
+- Organized JS into reusable utility functions.
+
+### ✔ 5. **AI Innovation**
+AI tools were used for:
+- Debugging complex filter logic  
+- Improving design consistency  
+- Generating documentation structures  
+- Code optimization suggestions  
+- Creating fallback messages and accessibility improvements  
+
+A complete log is available in:
